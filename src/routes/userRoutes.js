@@ -5,7 +5,7 @@ const {
   getUserById,
   updateUser,
   createUser,
-} = require("../controllers/useContrroller.js");
+} = require("../controllers/useController.js");
 
 const express = require("express");
 const validateUser = require("../middlewares/inputValidator.js");
