@@ -1,13 +1,21 @@
-const { createlUser, deleteUser, getAllUsers, getUserById, updateUser, createUser } = require("../controllers/useContrroller.js") ;
+const {
+  createlUser,
+  deleteUser,
+  getAllUsers,
+  getUserById,
+  updateUser,
+  createUser,
+} = require("../controllers/useContrroller.js");
 
 const express = require("express");
+const validateUser = require("../middlewares/inputValidator.js");
 
 const router = express.Router();
 
-router.post("/user", createUser);
+router.post("/user", validateUser, createUser);
 router.get("/user", getAllUsers);
 router.get("/user/:id", getUserById);
-router.put("/user/:id", updateUser);
+router.put("/user/:id", validateUser, updateUser);
 router.delete("/user/:id", deleteUser);
 
 module.exports = router;

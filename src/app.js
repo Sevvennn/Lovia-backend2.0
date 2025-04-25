@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const pool = require("./config/db.js");
 const userRoutes = require("./routes/userRoutes.js");
 const errorHandling = require("./middlewares/errorHandler.js");
+const createUserTable = require("./data/createUserTable.js");
 
 dotenv.config();
 
@@ -19,6 +20,10 @@ app.use(cors());
 app.use("/api", userRoutes);
 // Error handling middleware
 app.use(errorHandling);
+
+// Create table vefore starting server
+
+createUserTable();
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

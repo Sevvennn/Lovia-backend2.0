@@ -17,7 +17,7 @@ const createUserService = async (name, email) => {
 };
 const updateUserService = async (id, name, email) => {
   const result = await pool.query(
-    "UPDATE users SET name=$1, email=$2 WHERE id=$3 RETURNIMG *",
+    "UPDATE users SET name=$1, email=$2 WHERE id=$3 RETURNING *",
     [name, email, id]
   );
   return result.rows[0];
@@ -29,3 +29,11 @@ const deleteUserService = async (id) => {
   );
   return result.rows[0];
 };
+
+module.exports = {
+    getAllUsersService,
+    getUserByIdService,
+    createUserService,
+    updateUserService,
+    deleteUserService,
+  };
