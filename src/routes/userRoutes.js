@@ -1,5 +1,4 @@
 const {
-  createlUser,
   deleteUser,
   getAllUsers,
   getUserById,
